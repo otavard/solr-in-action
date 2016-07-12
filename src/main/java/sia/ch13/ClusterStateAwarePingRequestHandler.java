@@ -57,7 +57,7 @@ public class ClusterStateAwarePingRequestHandler extends PingRequestHandler {
                 if (zkController.isConnected()) {
                     ClusterState clusterState = zkController.getClusterState();
                     Slice slice = clusterState.getSlice(collectionName, shardName);
-                    replicaState = (slice != null) ? slice.getState() : "gone";
+                    replicaState = (String) ((slice != null) ? slice.getState() : "gone");
                 } else {
                     replicaState = "not connected to Zookeeper";
                 }
